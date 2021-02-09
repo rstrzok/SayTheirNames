@@ -20,9 +20,23 @@
 
 
         <style type="text/css">
-  html, body { margin: 0; padding: 0; height: 100%; }
-  #map { min-height: 100%; }
-</style>
+          html, body { margin: 0; padding: 0; height: 100%; }
+          #map { min-height: 100%; }
+
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+
+        </style>
 
 
     </head>
@@ -34,7 +48,7 @@
       <header>
         <img src="STN-header.jpg"
         width= 100%
-        height= 125px
+        height= 125px>
 
 
       </header>
@@ -45,40 +59,62 @@
         <script type="text/javascript">
 
 
-
-
-
-
           var map = L.map('map', {
               center: [37.0902,-95.7129],
               zoom: 4
           });
-// Info Control Start
+            
+            
+          // Info Control Start
           var info = L.control();
 
-
-
           info.onAdd = function (map) {
-          this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-          this.update();
-          return this._div;
-};
+              this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+              this.update();
+              return this._div;
+          };
 
-// method that we will use to update the control based on feature properties passed
+         // method that we will use to update the control based on feature properties passed
           info.update = function (props) {
-          this._div.innerHTML = '<h4>Biography :</h4>' +  (props ?
-          '<b>' + props.Victimsname + '</b><br />' + props.age + ' people / mi<sup>2</sup>'
-          : 'Hover over a point');
-};
+              this._div.innerHTML = '<h4>Biography :</h4>' +  (props ?
+              '<b>' + props.Victimsname + '</b><br />' + props.Age + ' people / mi<sup>2</sup>'
+              : 'Hover over a point');
+          };
+
+          info.addTo(map);
 
 
+            
+  function highlightFeature(e) {
+		var layer = e.target;
 
+		layer.setStyle({
+            radius: 8,
+            fillColor: "#8a2be2",
+			weight: 5,
+			fillOpacity: 0.7
+		});
 
+		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+			layer.bringToFront();
+		}
 
+		info.update(layer.feature.properties);
+	}
 
-info.addTo(map);
+   function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		info.update();
+	}
 
-
+            
+    function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+//			click: zoomToFeature
+		});
+	}
 
 
 
@@ -103,28 +139,14 @@ info.addTo(map);
            };
 
 
-              L.geoJson(data4,{
+              var geojson = L.geoJson(data4,{
                    pointToLayer: function (feature, latlng) {
                     return L.circleMarker(latlng , geojsonMarkerOptions);
-                     radius: 1;
-
-
-
-
-                }
+                },
+                onEachFeature: onEachFeature
 
 
               }).addTo(map);
-
-
-
-
-
-
-
-
-
-
 
 
         </script>
