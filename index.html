@@ -11,7 +11,7 @@
             integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
             crossorigin=""></script>
 
-            <script type="text/javascript" src="data5.js"></script>
+            <script type="text/javascript" src="data7.js"></script>
 
 
 
@@ -45,13 +45,13 @@
 
 
     <body>
-      <!-- <header>
+      <header>
         <img src="STN-header.jpg"
         width= 100%
         height= 125px>
 
 
-      </header> -->
+      </header>
 
 
         <div id="map" style="height: 500px"></div>s
@@ -66,7 +66,11 @@
 
 
           // Info Control Start
+
+
           var info = L.control();
+          
+
 
           info.onAdd = function (map) {
               this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
@@ -76,10 +80,12 @@
 
          // method that we will use to update the control based on feature properties passed
           info.update = function (props) {
-              this._div.innerHTML = '<h4>Biography :</h4>' +  (props ?
-              '<b>' + props.name + '</b><br />' + props.age + '</b><br />' + props.gender + '</b><br />'
-              : 'Hover over a point');
+              this._div.innerHTML =  (props ?
+              '<b>' + '<img src="'+ props.photo +'" style="width:100px;height:100px;">'+ '</b><br />' + props.name + '</b><br />' + props.age + '</b><br />' + '</b><br />' + props.report + '</b><br />'
+              : '<p style = "font-family:georgia,garamond,serif;font-size:12px;font-style:italic;">Hover over a point on the map');
           };
+
+
 
           info.addTo(map);
 
@@ -89,10 +95,10 @@
 		var layer = e.target;
 
 		layer.setStyle({
-            radius: 8,
-            fillColor: "#8a2be2",
-			weight: 5,
-			fillOpacity: 0.7
+            radius: 4,
+            fillColor: "#800000",
+			weight: 1,
+			fillOpacity: 0.9
 		});
 
 		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -113,15 +119,18 @@
 			mouseover: highlightFeature,
 			mouseout: resetHighlight,
 //			click: zoomToFeature
+
+
+
 		});
 	}
 
 
 
+
 // Info Control End
 
-          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                 attribution: '@ <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
                  maxZoom: 11,
                  minZoom: 4
               }).addTo(map);
@@ -129,8 +138,8 @@
 
               var geojsonMarkerOptions = {
                radius: 4,
-               fillColor: "#8a2be2",
-               color: "#000000",
+               fillColor: "#000000",
+               color: "#800000",
                weight: 1,
                opacity: 1,
                fillOpacity: .8
@@ -139,7 +148,7 @@
            };
 
 
-              var geojson = L.geoJson(data5,{
+              var geojson = L.geoJson(data7,{
                    pointToLayer: function (feature, latlng) {
                     return L.circleMarker(latlng , geojsonMarkerOptions);
                 },
