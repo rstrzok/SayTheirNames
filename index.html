@@ -60,8 +60,10 @@
 
 
           var map = L.map('map', {
+              zoomControl: false,
               center: [37.0902,-95.7129],
               zoom: 4
+
           });
 
 
@@ -69,13 +71,15 @@
 
 
           var info = L.control();
-          
+
+
 
 
           info.onAdd = function (map) {
               this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
               this.update();
               return this._div;
+
           };
 
          // method that we will use to update the control based on feature properties passed
@@ -83,6 +87,7 @@
               this._div.innerHTML =  (props ?
               '<b>' + '<img src="'+ props.photo +'" style="width:100px;height:100px;">'+ '</b><br />' + props.name + '</b><br />' + props.age + '</b><br />' + '</b><br />' + props.report + '</b><br />'
               : '<p style = "font-family:georgia,garamond,serif;font-size:12px;font-style:italic;">Hover over a point on the map');
+
           };
 
 
@@ -125,6 +130,15 @@
 		});
 	}
 
+  L.control.zoom({
+      position: 'topleft',
+      zoomInTitle: 'Zoom In',
+      zoomOutTitle:'Zoom Out'
+
+
+
+  }).addTo(map);
+
 
 
 
@@ -140,9 +154,9 @@
                radius: 4,
                fillColor: "#000000",
                color: "#800000",
-               weight: 1,
-               opacity: 1,
-               fillOpacity: .8
+               weight: .5,
+               opacity: .7,
+               fillOpacity: .5
 
 
            };
@@ -156,6 +170,9 @@
 
 
               }).addTo(map);
+
+
+
 
 
         </script>

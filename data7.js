@@ -1,6 +1,6 @@
 var data7 = {
 "type": "FeatureCollection",
-"name": "STN_MASS_SIMPLI",
+"name": "data7",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "id": 1, "name": "Robert D'Lon Harris", "age": "34", "gender": "Male", "photo": "https:\/\/fatalencounters.org\/wp-content\/uploads\/2020\/06\/Robert-DLon-Harris.jpg", "date": "6\/25\/2020", "address": "Will Rogers Turnpike, mile marker 285", "city": "Vinita", "state": "OK", "zip": 74301, "county": "Craig", "Latitude": 36.620178, "Longitude": -95.155895, "Street": "I-44", "Zip_1": 74301, "report": "A trooper pulled over a vehicle for an unspecified traffic violation at 8:56 a.m. The trooper brought the female driver back to his patrol unit to speak with her. The trooper then went back to the vehicle and began speaking with the male passenger, Robert D'Lon Harris. Trooper Caleb Cole shot and killed Robert Harris. Harris and a female driver were ordered to exit their car; but while talking to the driver, troopers said Harris reached back into his vehicle." }, "geometry": { "type": "Point", "coordinates": [ -95.155895, 36.620178 ] } },
