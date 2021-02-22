@@ -92,6 +92,7 @@
 
 
 
+
           info.addTo(map);
 
 
@@ -123,7 +124,7 @@
 		layer.on({
 			mouseover: highlightFeature,
 			mouseout: resetHighlight,
-//			click: zoomToFeature
+			// click: zoomToFeature,
 
 
 
@@ -150,6 +151,8 @@
               }).addTo(map);
 
 
+
+
               var geojsonMarkerOptions = {
                radius: 4,
                fillColor: "#000000",
@@ -165,11 +168,33 @@
               var geojson = L.geoJson(data8,{
                    pointToLayer: function (feature, latlng) {
                     return L.circleMarker(latlng , geojsonMarkerOptions);
-                },
+// small pop up
+             function onEachFeature(feature, layer) {
+             layer.on({
+             mouseover: highlightFeature,
+             mouseout: resetHighlight,
+            click: zoomToFeature,
+});
+             if (layer.feature.properties) {
+             layer.bindPopup( + feature.properties.name  + feature.properties.age
+             );
+}
+}
+
+},
+// small pop up
+
+
                 onEachFeature: onEachFeature
 
 
+
+
               }).addTo(map);
+
+
+
+
 
 
 
