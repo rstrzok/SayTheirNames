@@ -51,10 +51,11 @@
         height= 125px>
 
 
+
       </header>
 
 
-        <div id="map" style="height: 500px"></div>s
+        <div id="map" style="height: 500px"></div>
 
         <script type="text/javascript">
 
@@ -131,6 +132,8 @@
 		});
 	}
 
+
+
   L.control.zoom({
       position: 'topleft',
       zoomInTitle: 'Zoom In',
@@ -143,6 +146,9 @@
 
 
 
+
+
+
 // Info Control End
 
           L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
@@ -150,6 +156,9 @@
                  minZoom: 4
               }).addTo(map);
 
+
+
+              // add the search bar to the map
 
 
 
@@ -168,16 +177,25 @@
               var geojson = L.geoJson(data8,{
                    pointToLayer: function (feature, latlng) {
                     return L.circleMarker(latlng , geojsonMarkerOptions);
+
+                    L.control.search(data8,{
+                        layer: data8,
+                        initial: false,
+                        propertyName: 'props.name' // Specify which property is searched into.
+                      })
+                      .addTo(map);
 // small pop up
-             function onEachFeature(feature, layer) {
+             function onEachFeature(data8) {
              layer.on({
              mouseover: highlightFeature,
              mouseout: resetHighlight,
-            click: zoomToFeature,
+            // click: zoomToFeature,
 });
              if (layer.feature.properties) {
              layer.bindPopup( + feature.properties.name  + feature.properties.age
              );
+
+
 }
 }
 
@@ -191,9 +209,6 @@
 
 
               }).addTo(map);
-
-
-
 
 
 
