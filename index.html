@@ -25,18 +25,19 @@
           html, body { margin: 0; padding: 0; height: 100%; }
           #map { min-height: 100%; }
 
+
+
         .info {
+
             padding: 6px 8px;
-            font: 14px/16px Arial, Helvetica, sans-serif;
-            background: white;
-            background: rgba(255,255,255,0.8);
+            font: 14px/16px Arial, Helvetica, sans-serif, red;
+            margin: 0 0 5px;
+            color: #111111;
+            background: #333333;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             border-radius: 5px;
         }
-        .info h4 {
-            margin: 0 0 5px;
-            color: #777;
-        }
+
 
         </style>
 
@@ -93,8 +94,8 @@
          // method that we will use to update the control based on feature properties passed
           info.update = function (props) {
               this._div.innerHTML =  (props ?
-              '<b>' + '<img src="'+ props.photo +'" style="width:200px;height:200px;">'+ '</b><br />' + props.name + '</b><br />' + props.age + '</b><br />' + '</b><br />' + props.report + '</b><br />'
-              : '<p style = "font-family:georgia,garamond,serif;font-size:12px;font-style:italic;">Hover over a point on the map');
+              '<b>' + '<img src="'+ props.photo +'" style="width:200px;height:200px;">'+ '</b><br />' +  props.name + '</b><br />' + props.age + '</b><br />' + '</b><br />' + props.report + '</b><br />'
+              : '<p style = "font-family:georgia,garamond,serif;font-size:14px;font-style:italic;color:darkred;">Hover over a point on the map');
 
           };
 
@@ -145,6 +146,8 @@
       position: 'topleft',
       zoomInTitle: 'Zoom In',
       zoomOutTitle:'Zoom Out',
+      
+
 
 
 
