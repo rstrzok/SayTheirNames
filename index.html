@@ -21,10 +21,10 @@
             padding: 6px 8px;
             font: 14px/16px Arial, Helvetica, sans-serif, red;
             margin: 0 0 5px;
-            color: #111111;
-            background: #333333;
+            color: #000000;
+            background: #FFFFFF;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
-            border-radius: 5px;
+            border-radius: 15px;
         }
 
 
@@ -107,7 +107,7 @@
 
         function clickFeature(e) {
                 var center = e.target.getLatLng(),
-                    zoom = 10;
+                    zoom = 7;
                  map.setView(center,zoom);
 
             var layer = e.target;
@@ -201,7 +201,7 @@
                 onEachFeature: onEachFeature
 
               }).bindTooltip(function(layer){
-                  return "<b>Name</b>: " + layer.feature.properties.name +"<br/>" +" <b>Age</b>: " + layer.feature.properties.age +"<br/>" + " <b>City<b/>: " + layer.feature.properties.city +"<br/>" + "<b>State<b/>: " + layer.feature.properties.state;
+                  return "<b>Name</b>: " + layer.feature.properties.name +"<br/>" +" <b>Age</b>: " + layer.feature.properties.age +"<br/>" + " <b>City</b>: " + layer.feature.properties.city +"<br/>" + "<b>State</b>: " + layer.feature.properties.state;
               }).addTo(map);
 
 
