@@ -27,6 +27,39 @@
             border-radius: 15px;
         }
 
+        ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  border-right:1px solid #000000;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
 
         </style>
   </head>
@@ -42,10 +75,12 @@
 
       </header>
 
-      <nav>
-   <a href="https://rstrzok.github.io/SayTheirNames/"><b>Home</b></a> |
+      <ul>
+  <li><a href="https://rstrzok.github.io/SayTheirNames/">Home</a></li>
+  <li><a href="https://www.nonopera.org/WP2/voices/">News</a></li>
+  <li><a href="https://www.nonopera.org/WP2/staff-2/">About</a></li>
+</ul>
 
- </nav>
 
 
         <div id="map" style="height: 500px"></div>
@@ -78,7 +113,7 @@
           info.update = function (props) {
               this._div.innerHTML =  (props ?
               '<b>' + '<img src="'+ props.photo +'" style="width:200px;height:200px;">'+ '</b><br />' +  props.name + '</b><br />' + props.age + '</b><br />' + '</b><br />' + props.report + '</b><br />'
-              : '<p style = "font-family:georgia,garamond,serif;font-size:14px;font-style:italic;color:darkred;">Select a point on the map');
+              : '<p style = "font-family:georgia,garamond,serif;font-size:14px;font-style:italic;color:black;">Select a point on the map');
 
           };
 
