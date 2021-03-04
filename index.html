@@ -19,10 +19,10 @@
         .info {
 
             padding: 6px 8px;
-            font: 14px/16px Arial, Helvetica, sans-serif, red;
+            font: 14px/16px Arial, Helvetica, sans-serif, black;
             margin: 0 0 5px;
             color: #000000;
-            background: #FFFFFF;
+            background: darkgrey;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             border-radius: 15px;
         }
@@ -65,7 +65,7 @@ li a:hover:not(.active) {
   </head>
 
 
-    <body style="background-color:darkred;">
+    <body style="background-color:darkgrey;">
 
       <header>
 
@@ -147,7 +147,7 @@ li a:hover:not(.active) {
 
         function clickFeature(e) {
                 var center = e.target.getLatLng(),
-                    zoom = 7;
+                    zoom = 11;
                  map.setView(center,zoom);
 
             var layer = e.target;
