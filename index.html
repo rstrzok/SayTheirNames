@@ -9,6 +9,8 @@
 
         <script type="text/javascript" src="data8.js"></script>
 
+        <!-- <script type="text/javascript" src="overlay.js"></script> -->
+
 
         <style type="text/css">
           html, body { margin: 0; padding: 0; height: 100%; }
@@ -243,6 +245,8 @@ li a:hover:not(.active) {
               }).bindTooltip(function(layer){
                   return "<b>Name</b>: " + layer.feature.properties.name +"<br/>" +" <b>Age</b>: " + layer.feature.properties.age +"<br/>" + " <b>City</b>: " + layer.feature.properties.city +"<br/>" + "<b>State</b>: " + layer.feature.properties.state;
               }).addTo(map);
+
+              // L.geoJson(overlay).addTo(map);
 
 
         </script>
