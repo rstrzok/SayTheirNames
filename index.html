@@ -11,7 +11,7 @@
 
     <script type="text/javascript" src="data8.js"></script>
 
-
+    <script src="./Leaflet.NavBar.js"></script>
 
 
 
@@ -30,6 +30,28 @@
             margin-right: auto;
             width: 50%;
 
+          }
+
+          .navbar-fixed-left {
+          width: 140px;
+          position: fixed;
+          border-radius: 0;
+          height: 100%;
+          }
+
+          .navbar-fixed-left .navbar-nav > li {
+          float: none;  /* Cancel default li float: left */
+          width: 139px;
+          }
+
+          .navbar-fixed-left + .container {
+          padding-left: 160px;
+          }
+
+          /* On using dropdown menu (To right shift popuped) */
+          .navbar-fixed-left .navbar-nav > li > .dropdown-menu {
+          margin-top: -50px;
+          margin-left: 140px;
           }
 
 
@@ -72,11 +94,11 @@
 }
 
        li a:hover:not(.active) {
-  background-color: #262626;
+          background-color: #262626;
 }
 
          .active {
-           background-color: #262626;
+          background-color: #262626;
 }
 
 
@@ -101,7 +123,7 @@
 <!-- below image causing nav bar issues -->
       <ul>
 
-      <li><a href="https://rstrzok.github.io/SayTheirNames/"><img src="home1.png" height=30px</a></li>
+      <li><a href="https://rstrzok.github.io/SayTheirNames/">Home</a></li>
       <li style= "float:right" ><a href="https://www.nonopera.org/WP2/staff-2/">About</a></li>
       </ul>
 
@@ -112,9 +134,9 @@
         <script type="text/javascript">
 
 
-          var map = L.map('map', {
-              zoomControl: false,
-              center: [37.49024, -98.312891],
+        var map = L.map('map', {
+              zoomControl: true,
+              center: [33.49024, -97.312891],
               zoom: 4,
 
 
@@ -124,10 +146,6 @@
           });
 
 
-          var maxBounds = L.latLngBounds(
-              L.latLng(5.499550, -167.276413), //Southwest
-              L.latLng(83.162102, -52.233040)  //Northeast
-          );
 
           // Info Control Start
 
@@ -201,21 +219,16 @@
 
 
 
-  L.control.zoom({
-      position: 'topleft',
-      zoomInTitle: 'Zoom In',
-      zoomOutTitle:'Zoom Out',
 
 
 
-
-
-
-  }).addTo(map);
-
-
-
-
+  // <div id="mymap" style="height: 800px"></div>
+  //
+  //         <script type="text/javascript">
+  //             var map = L.map('mymap', {
+  //             center: [38.1625228, -96.9633171],
+  //             zoom: 5
+  //         });
 
 
 
@@ -223,8 +236,9 @@
 
       L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
                  maxZoom: 11,
-                 minZoom: 3
+                 minZoom: 4,
               }).addTo(map);
+
 
 
       function getColor(value) {
@@ -275,6 +289,8 @@
                     }).bindTooltip(function(layer){
                       return "<b>Name</b>: " + layer.feature.properties.name +"<br/>" +" <b>Age</b>: " + layer.feature.properties.age +"<br/>" + " <b>City</b>: " + layer.feature.properties.city +"<br/>" + "<b>State</b>: " + layer.feature.properties.state;
                     }).addTo(map);
+
+                    L.control.navbar().addTo(map);
 
 
 
