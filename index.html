@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Say Their Names Web Map</title>
+    <title>Say Their Names Web Map</title>
 
 
 
-   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
-        <script type="text/javascript" src="data8.js"></script>
+    <script type="text/javascript" src="data8.js"></script>
 
 
 
 
 
-        <script type="text/javascript" src="overlay.js"></script>
+    <script type="text/javascript" src="overlay.js"></script>
 
 
 
 
-        <style type="text/css">
+    <style type="text/css">
           html, body { margin: 0; padding: 0; height: 100%; }
           #map { min-height: 100%; }
 
@@ -34,7 +34,7 @@
 
 
 
-        .info {
+          .info {
 
             padding: 6px 8px;
             font: 14px/16px Arial, Helvetica, sans-serif, black;
@@ -43,65 +43,67 @@
             background: white;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             border-radius: 15px;
-        }
+}
 
         ul {
-  list-style-type: none;
-  margin:0;
-  padding: 0;
-  overflow: hidden;
-  background-color: black;
+           list-style-type: none;
+           margin:1;
+           padding: 0;
+           overflow: hidden;
+           background-color: #202020;
 }
 
-li {
-  float: left;
-  border-right:1px solid #262626;
-  border-left:1px solid #262626;
+       li {
+          float: left;
+          border-right:1px solid #262626;
+          border-left:1px solid #262626;
 }
 
-li:last-child {
-  border-right: 1px solid #262626;
+       li:last-child {
+          border-right: 1px solid #262626;
 }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+       li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
 }
 
-li a:hover:not(.active) {
-  background-color: #878787;
+       li a:hover:not(.active) {
+  background-color: #262626;
 }
 
-.active {
-  background-color: #4CAF50;
+         .active {
+           background-color: #262626;
 }
 
 
-        </style>
-  </head>
+    </style>
+    </head>
 
 
-    <body style="background-color:#262626;">
-
-
-
-      <header>
-
-        <img src="STN-header.jpg" class="center"
-        width = 50%
-        height= 80px>
+    <body style="background-color:black;">
 
 
 
-      </header>
+    <header>
 
+    <img src="STN-header.jpg" class="center"
+         width = 50%
+         height= 80px>
+
+
+
+
+   </header>
+<!-- below image causing nav bar issues -->
       <ul>
-  <li><a href="https://rstrzok.github.io/SayTheirNames/">Home</a></li>
-  <li style= "float:right" ><a href="https://www.nonopera.org/WP2/staff-2/">About</a></li>
-</ul>
+
+      <li><a href="https://rstrzok.github.io/SayTheirNames/"><img src="home1.png" height=30px</a></li>
+      <li style= "float:right" ><a href="https://www.nonopera.org/WP2/staff-2/">About</a></li>
+      </ul>
 
 
 
@@ -219,49 +221,48 @@ li a:hover:not(.active) {
 
 // Info Control End
 
-          L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
+      L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
                  maxZoom: 11,
                  minZoom: 3
               }).addTo(map);
 
 
-              function getColor(value) {
-                  return value = 157 ? '#262626':
-                         value = 36  ? '#262626':
-                         'transparent';
+      function getColor(value) {
+               return value = 157 ? '#262626':
+                      value = 36  ? '#262626':
+                                    'transparent';
 
-              }
-              function style(feature){
-    return {
-        fillColor: getColor(feature.properties.OBJECTID),
-        weight: 5,
-        opacity: .3,
-        color: '#262626',
-        fillOpacity: .6
-    };
+}
+      function style(feature){
+               return {
+                      fillColor: getColor(feature.properties.OBJECTID),
+                      weight: 5,
+                      opacity: .3,
+                      color: '#262626',
+                      fillOpacity: .6
+};
 }
 
 
-L.geoJson(overlay, {
-   style:style
-}).addTo(map);
+      L.geoJson(overlay, {
+        style:style
+        }).addTo(map);
 
 
 
 
-              var geojsonMarkerOptions = {
-               radius: 4,
-               fillColor: "#000000",
-               color: "#FF0000",
-               weight: .5,
-               opacity: .7,
-               fillOpacity: .5
+      var geojsonMarkerOptions = {
+                      radius: 4,
+                      fillColor: "#000000",
+                      color: "#FF0000",
+                      weight: .5,
+                      opacity: .7,
+                      fillOpacity: .5
+};
 
-           };
 
-
-              var geojson = L.geoJson(data8,{
-                   pointToLayer: function (feature, latlng) {
+      var geojson = L.geoJson(data8,{
+                    pointToLayer: function (feature, latlng) {
                     return L.circleMarker(latlng , geojsonMarkerOptions);
 
 
@@ -269,14 +270,14 @@ L.geoJson(overlay, {
 
 
 
-                onEachFeature: onEachFeature
+      onEachFeature: onEachFeature
 
-              }).bindTooltip(function(layer){
-                  return "<b>Name</b>: " + layer.feature.properties.name +"<br/>" +" <b>Age</b>: " + layer.feature.properties.age +"<br/>" + " <b>City</b>: " + layer.feature.properties.city +"<br/>" + "<b>State</b>: " + layer.feature.properties.state;
-              }).addTo(map);
+                    }).bindTooltip(function(layer){
+                      return "<b>Name</b>: " + layer.feature.properties.name +"<br/>" +" <b>Age</b>: " + layer.feature.properties.age +"<br/>" + " <b>City</b>: " + layer.feature.properties.city +"<br/>" + "<b>State</b>: " + layer.feature.properties.state;
+                    }).addTo(map);
 
 
 
-        </script>
+   </script>
 
    </body>
