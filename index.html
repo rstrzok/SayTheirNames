@@ -18,6 +18,8 @@
         <script type="text/javascript" src="overlay.js"></script>
 
 
+
+
         <style type="text/css">
           html, body { margin: 0; padding: 0; height: 100%; }
           #map { min-height: 100%; }
@@ -27,6 +29,7 @@
             margin-left: auto;
             margin-right: auto;
             width: 50%;
+
           }
 
 
@@ -44,7 +47,7 @@
 
         ul {
   list-style-type: none;
-  margin: 1;
+  margin:0;
   padding: 0;
   overflow: hidden;
   background-color: black;
@@ -52,11 +55,12 @@
 
 li {
   float: left;
-  border-right:1px solid #000000;
+  border-right:1px solid #262626;
+  border-left:1px solid #262626;
 }
 
 li:last-child {
-  border-right: none;
+  border-right: 1px solid #262626;
 }
 
 li a {
@@ -89,6 +93,7 @@ li a:hover:not(.active) {
         <img src="STN-header.jpg" class="center"
         width = 50%
         height= 80px>
+
 
 
       </header>
@@ -216,7 +221,7 @@ li a:hover:not(.active) {
 
           L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
                  maxZoom: 11,
-                 minZoom: 4
+                 minZoom: 3
               }).addTo(map);
 
 
