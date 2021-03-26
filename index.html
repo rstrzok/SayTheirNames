@@ -12,7 +12,7 @@
     <script type="text/javascript" src="data8.js"></script>
 
     <script src="./Leaflet.NavBar.js"></script>
-
+    <script src="./fuse.js"></script>
 
 
     <script type="text/javascript" src="overlay.js"></script>
@@ -272,7 +272,18 @@
 
                     L.control.navbar().addTo(map);
 
+                    L.geoJson(someFeatures, {
+                        filter: function(feature, layer) {
+                            return feature.properties.show_on_map;
+                        }
+                    }).addTo(map);
 
+
+                    searchCtrl.indexFeatures(data8, ['name']);
+
+
+                    var searchCtrl = L.control.fuseSearch()
+searchCtrl.addTo(map);
 
    </script>
 
